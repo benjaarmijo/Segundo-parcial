@@ -1,17 +1,45 @@
-intento = 3
+#Lista
 
-while intento > 0:
-    
-    password = input("Ingrese su clave: ")
-    if password == "1234":
-        print("Bienvenido")
-        break
-    else:
+"""
+numero = [1,2,3,4,5]
+print(numero[0])
 
-        intento -= 1
+numero.append(50)
+print(numero)
 
-        print(f"Intento fallido, te falta, {intento}")
+"""
 
-        if intento == 0:
-            print("Acceso denegado")
-        
+#Tupla
+
+"""
+objeto = ("lentes", "1", "cereza")
+
+print(objeto[1])
+
+"""
+#DIccionario
+
+"""
+Cosas = {
+    "juan": 25,
+    "Maria": 20,
+    "Carlos": 19,
+
+}
+print("Juan tiene una edad de: ", Cosas["juan"], "Hola, Carlos. Tienes una edad de: ", Cosas["Carlos"])
+
+"""
+
+#funcion
+"""
+def saludo(nombre):
+
+    return "¡Hola!", nombre + "!"
+
+mensaje = saludo("Estudiante: ")
+
+nombre = input("Dime tu nombre: ")
+
+print(f"{mensaje}, {nombre}")
+
+"""
