@@ -1,22 +1,98 @@
-suma = 0
+def mostrar_menu():
+    print()
+    print("___________________________Menu Principal_________________________")
+    print("1. Agregar vehiculo")
+    print("2. Buscar vehiculo")
+    print("3. Eliminar vehiculo")
+    print("4. Actualizar vehiculo")
+    print("5. Mostrar vehiculo")
+    print("6. Salir")
+    print("__________________________________________________________________")
 
-for i in range (5):
-    
-    while True:
+
+    # Funcion para leer
+
+    def leer_opcion():
         try:
-            numero = float(input(f"Ingrese el numero {i + 1}: "))
-            
-            suma = suma + numero
+            opcion = int(input("Selecciona una opcion: "))
 
-            break
-        except:
+            if opcion >= 1 and opcion <= 6:
+                return opcion
 
-            print("Error, debe ingresar un numero valido")
+            else:
+                print("Error, Debe ingresar una opcion del 1 al 6")
+                return 0 
 
-print("La suma total es: ", suma)            
+        except ValueError:
+            print("Ingresa un numero entero")
+            return 0
+        
+def validacion_modelo(modelo):
+    if modelo.strip() != "":
+        return True       
 
-"""
-Hay un pequeña tienda que desea modernizar su sistema de venta, actualmente el vendedor lleva un modesto registro manual y al final del dia debe calcular todo lo vendido. 
-Para facilitar el trabajo necesitamos crear un programa en python y cuando hagamos la venta le debe solicitar sus datos, nombre, rut, el carnet en general, una vez que tenga todos
-los datos el usuario debe introducir 10 productos para comprar, una vez realizada la compra, debe mostrar el resultado de la compra si tiene alguna descuento muestra el descuento
-"""
+    else:
+        return False
+        
+# Funcion de año
+
+def validar_anio(anio):
+    if anio > 1980:
+        return True
+    else:
+        return False
+    
+# Funcion de precio
+  
+def validar_precio(precio):
+    if precio > 0:
+        return True
+    else:
+        return False    
+    
+# Funcion de vehiculo
+
+def agregar_vehiculo(lista_vehiculos):
+    print()
+    print("Agregar Vehiculo") 
+
+    modelo = input("Agrega el modelo del vehiculo: ")
+    
+    if not validacion_modelo(modelo):
+        print("Error, blabla")
+        return
+    
+    try:
+        anio = int(input("Ingrese el año del vehiculo: "))
+
+        if not validar_anio(anio):
+            print("Error, blabla")
+            return
+        
+    except ValueError:
+        print("Error: Debe ingresar un año entero")
+
+    try:
+        precio = float(input("Ingrese el precio del vehiculo: "))
+
+        if not validar_precio(precio):
+            print("Error, el precio debe ser mayor que cero")
+            return
+
+    except ValueError:
+        print("Error, el precio debe ser un numero decimal")
+        return
+
+
+
+    vehiculo = {
+        "modelo": modelo.strip(),
+        "anio": anio,
+        "precio": precio,
+        "disponible": False 
+
+    }            
+
+    lista_vehiculos.append(vehiculo)
+    
+    print("Vehiculo agregado correctamente")
